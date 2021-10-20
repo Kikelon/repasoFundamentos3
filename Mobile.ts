@@ -71,6 +71,10 @@ export class Mobile{
         this.is5G = is5G;
     }
 
+    public getIs5G():boolean{
+        return this.is5G;
+    }
+
     public setCameraNumber(cameraNumber: number){
         this.cameraNumber = cameraNumber;
     };

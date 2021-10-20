@@ -15,6 +15,7 @@ export class MobileLibrary{
         this.name = name;
         this.location = location;
         this.mobiles = mobiles;
+        this.totalPriceCalculation();
     }
 
     // Settters y Getters
@@ -37,13 +38,14 @@ export class MobileLibrary{
 
     public setMobiles(mobiles: Mobile[]){
         this.mobiles = mobiles;
+        this.totalPriceCalculation();
     }
 
     public getMobiles(): Mobile[]{
         return this.mobiles;
     }
 
-    public setTotalPrice(totalPrice: number){
+    private setTotalPrice(totalPrice: number){
         this.totalPrice = totalPrice;
     }
 
@@ -53,11 +55,20 @@ export class MobileLibrary{
 
     //Métodos
 
-    public totalPriceCalculation(){
+    private totalPriceCalculation(){
         this.totalPrice = 0;
         this.mobiles.forEach(element => {
             this.totalPrice += element.getPrice();
         });
+   }
+   public printLibrary(){
+       (this.mobiles.length>1) ? console.log("This are all my mobiles") : console.log("This is my mobile");
+       this.mobiles.forEach(element => {
+            console.log("The characteristics of the mobile", element.getName(), "are:\n\t- Name:", element.getName(),
+            "\n\t- Model:", element.getModel(),"\n\t- TradeMark:", element.getTradeMark(), "\n\t- SD Size(GB):", element.getSdSize(),
+            "\n\t- Color:", element.getColor(), "\n\t- Is 5G?:", element.getIs5G(),"\n\t- Number of Cameras:", element.getCameraNumber(),"\n");
+       });
+       console.log("Price overall:", this.totalPrice,"\n")
    }
 
 }
